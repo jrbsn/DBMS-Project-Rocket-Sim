@@ -14,7 +14,7 @@ response = lambda_client.invoke(
 )
 #print(response['Payload'])
 
-apogee = response['Payload'].read().decode("utf-8")
+apogee = float(response['Payload'].read().decode("utf-8"))
 #print(response['Payload'].read().decode("utf-8"))
 
-print("Altitude: %i ft" % float(apogee))
+print("Altitude: %i ft" % apogee)
