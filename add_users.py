@@ -1,3 +1,5 @@
+# This is a proof of concept python app that can manipulate data in a cloud database using the boto3 library
+
 import boto3, json
 
 lambda_client = boto3.client('lambda')
