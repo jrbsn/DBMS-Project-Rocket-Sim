@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 
 public class UserInterface{
 
-    
+    //remember this returns your values for a data passer you fucking idiot
 
-    public ListReferenceBased RocketGui() {
+
+    public static ListReferenceBased RocketGui() {
         ListReferenceBased datalist = new ListReferenceBased();
         
+        //arbitrary size to be set later
         JFrame rocketframe = new JFrame("rocket");
         rocketframe.setLayout(new FlowLayout());
         rocketframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,6 +31,7 @@ public class UserInterface{
                 } catch (NumberFormatException ex) {
                     // Handle invalid number format here, e.g. display an error message
                 }
+            
             }
         });
         rocketframe.add(masslabel);
@@ -73,6 +76,9 @@ public class UserInterface{
         rocketframe.add(diameter);
 
         rocketframe.setVisible(true);
+        // insert math output methods here for the GUI see if possible to change to multimethod gui
+        // i hate javaswing
+
         return datalist;
     }
 }
