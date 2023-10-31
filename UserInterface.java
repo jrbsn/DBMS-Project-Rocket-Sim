@@ -72,12 +72,18 @@ public class UserInterface{
                 }
             }
         });
+        //placeholder null variable
+        String pythonoutput = null;
+        JLabel mathtext = new JLabel(pythonoutput);
+        
         rocketframe.add(diameterLabel);
         rocketframe.add(diameter);
 
         rocketframe.setVisible(true);
         // insert math output methods here for the GUI see if possible to change to multimethod gui
         // i hate javaswing
+        
+    
 
         return datalist;
     }
