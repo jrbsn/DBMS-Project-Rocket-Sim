@@ -3,6 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
+import java.io.IOException;
 
 public class UserInterface {
 
@@ -98,5 +101,22 @@ public class UserInterface {
         });
         rocketframe.add(diameterLabel);
         rocketframe.add(diameter);
+    }
+    public static void ExcelUpload(){
+    JButton fileuploadButton = new JButton("Choose Excel File to Upload");
+    fileuploadButton.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+        JFileChooser excelfile = new JFileChooser();
+        try {
+            Runtime.getRuntime().exec("explorer.exe /select, path ");
+        } catch (IOException e1) {
+            e1.printStackTrace();
+            FileNameExtensionFilter Filter = new FileNameExtensionFilter("excel" , "csv", "xls", "xlsx" );
+            File selectFile = excelfile.getSelectedFile();
+        }
+            }
+        });
+
     }
 }
