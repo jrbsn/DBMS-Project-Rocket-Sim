@@ -14,7 +14,7 @@ public class VariablePasser{
         String diameter = String.valueOf(dataValues[2]);
         //System.out.println(diameter);
 // god i hope this fucking works i literally cant think of a better way
-        ProcessBuilder Translator = new ProcessBuilder("python", "/home/callisto/Documents/DBMS-Project-Rocket-Sim/PyVariMod.py", mass, drag, diameter);
+        ProcessBuilder Translator = new ProcessBuilder("python", "PyVariMod.py", mass, drag, diameter);
         Process process = Translator.start();
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
