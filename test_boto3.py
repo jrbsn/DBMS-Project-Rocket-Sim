@@ -1,12 +1,12 @@
 import boto3, json
 from botocore.config import Config
-
-
+from PyVariMod import variablepasser
+mass, drag, diameter = variablepasser()
 lambda_client = boto3.client('lambda')
 test_event = {
-    "diameter": 4,
-    "cd": 0.5,
-    "mass": 4
+    "diameter": diameter,
+    "cd": drag,
+    "mass": mass
 }
 response = lambda_client.invoke(
   FunctionName='simpleMathModel',
