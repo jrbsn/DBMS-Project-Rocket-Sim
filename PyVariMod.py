@@ -9,15 +9,15 @@ def variableapasser():
         drag = float(sys.argv[2])
         diameter = float(sys.argv[3])
         # test values for variable passing check{
-        # print(f"Mass: {mass}")
-        # print(f"Drag: {drag}")
-        # print(f"Diameter: {diameter}")
+        print(f"Mass: {mass}")
+        print(f"Drag: {drag}")
+        print(f"Diameter: {diameter}")
         # }
         return mass, drag, diameter
     else:
         print("Expected 3 arguments: mass, drag, and diameter.")
         return 0
-variableapasser()
+
 
 mass, drag, diameter = variableapasser()
 
