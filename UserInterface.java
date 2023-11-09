@@ -20,7 +20,7 @@ public class UserInterface {
         JButton submit = new JButton("Submit");
         submit.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 try {
                     dataValues[0] = Double.parseDouble(massInput.getText());
                     dataValues[1] = Double.parseDouble(dragInput.getText());
