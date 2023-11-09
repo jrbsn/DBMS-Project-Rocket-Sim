@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 // import javax.swing.filechooser.FileNameExtensionFilter;
 // import java.io.File;
 // import java.io.IOException;
+import java.io.File;
 
 public class UserInterface {
     static double[] dataValues = new double[3];
@@ -17,10 +18,11 @@ public class UserInterface {
         JTextField dragInput = addDragInput(rocketframe);
         JTextField diameterInput = addDiameterInput(rocketframe);
 
+        // Submit Button
         JButton submit = new JButton("Submit");
         submit.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 try {
                     dataValues[0] = Double.parseDouble(massInput.getText());
                     dataValues[1] = Double.parseDouble(dragInput.getText());
@@ -37,9 +39,39 @@ public class UserInterface {
         rocketframe.add(submit);
         rocketframe.setVisible(true);
         
+        // File Explorer Button
+        JButton openFileExplorer = new JButton("Open File Explorer");
+        openFileExplorer.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                JFileChooser fileChooser = new JFileChooser();
+                
+                // Set the file selection mode to files and directories
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                
+                // Open the dialog window
+                int returnValue = fileChooser.showOpenDialog(null);
+                
+                if (returnValue == JFileChooser.APPROVE_OPTION) 
+                {
+                    // Get the selected file
+                    File selectedFile = fileChooser.getSelectedFile();
+                    
+                    // Print the path of the selected file to the console
+                    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+                }
+            }
+        });
+        rocketframe.add(openFileExplorer);
+        rocketframe.setVisible(true);
+        
+        
+
     }
     
-        private static JFrame initializeFrame() {
+    private static JFrame initializeFrame() {
         JFrame rocketframe = new JFrame("rocket");
         rocketframe.setLayout(new FlowLayout());
         rocketframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
