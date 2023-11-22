@@ -10,7 +10,8 @@ public class FrameConstructor {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                } else {
+                } 
+                else {
                     System.out.println("All values are not filled. Cannot execute VariablePasser.");
                 }
             });

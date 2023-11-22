@@ -19,8 +19,8 @@ public class VariablePasser{
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
         while ((line = reader.readLine()) != null) {
-        System.out.println(line);
-}   
+            System.out.println(line);
+        }   
         int exitCode;
         try{
             exitCode = process.waitFor();
@@ -33,5 +33,6 @@ public class VariablePasser{
         }
     }
 
+    
 }
 
