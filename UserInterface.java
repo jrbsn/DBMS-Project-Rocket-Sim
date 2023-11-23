@@ -10,7 +10,7 @@ import java.io.File;
 public class UserInterface {
     static double[] dataValues = new double[3];
     static boolean isSubmitted = false;
-
+    
     public static void RocketGui(Runnable callback) {
         JFrame rocketframe = initializeFrame();
 
@@ -31,7 +31,8 @@ public class UserInterface {
                     isSubmitted = true;
                     callback.run();         // Run the callback
 
-                } catch (NumberFormatException ex) {
+                } 
+                catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(rocketframe, "Please enter valid numbers in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -39,36 +40,6 @@ public class UserInterface {
         rocketframe.add(submit);
         rocketframe.setVisible(true);
         
-        // File Explorer Button
-        JButton openFileExplorer = new JButton("Open File Explorer");
-        openFileExplorer.addActionListener(new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                JFileChooser fileChooser = new JFileChooser();
-                
-                // Set the file selection mode to files and directories
-                fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-                
-                // Open the dialog window
-                int returnValue = fileChooser.showOpenDialog(null);
-                
-                if (returnValue == JFileChooser.APPROVE_OPTION) 
-                {
-                    // Get the selected file
-                    File selectedFile = fileChooser.getSelectedFile();
-                    
-                    // Print the path of the selected file to the console
-                    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-                }
-            }
-        });
-        rocketframe.add(openFileExplorer);
-        rocketframe.setVisible(true);
-        
-        
-
     }
     
     private static JFrame initializeFrame() {
