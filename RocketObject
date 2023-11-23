@@ -1,0 +1,49 @@
+// Rocket Object class in case we need it
+public class RocketObject 
+{
+    public String name;
+    public String user;
+    public int id;
+    public double mass;
+    public double cd;
+    public double diameter;
+    // public double apogee;
+    
+    public void setRocketName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setRocketUser(String user)
+    {
+        this.user = user;
+    }
+
+    public void setRocketId(int id)
+    {
+        this.id = id;
+    }
+
+    public void setRocketValues(double mass, double cd, double diameter)
+    {
+        this.mass = mass;
+        this.cd = cd;
+        this.diameter = diameter;
+    }
+
+    public double getRocketMass()
+    {
+        return mass;
+    }
+
+    public double getRocketCd()
+    {
+        return cd;
+    }
+
+    public double getRocketDiameter()
+    {
+        return diameter;
+    }
+
+}
