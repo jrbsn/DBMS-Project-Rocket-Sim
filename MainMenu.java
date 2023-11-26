@@ -34,8 +34,16 @@ public class MainMenu {
 
         // Add menu items
         JMenuItem menuItemLogin = new JMenuItem("Login");
+               menuItemLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call the FrameConstructor main method
+                LoginFrameConstructor.main(new String[0]);
+            }
+        });
         JMenuItem menuItemLogout = new JMenuItem("Logout");
         JMenuItem menuItemRegister = new JMenuItem("Register");
+
         JMenuItem menuItemExit = new JMenuItem("Exit");
 
         JMenuItem menuItemCreateRocket = new JMenuItem("Create Rocket");
