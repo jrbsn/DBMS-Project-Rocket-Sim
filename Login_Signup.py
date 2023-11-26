@@ -1,12 +1,13 @@
-#----- Sign up ------# (use this to connect front end sign up to backend)
+#------ Login ------#
 
 import boto3, json
 
 from PyVariMod import variablepasser
-username, password = variablepasser()
+type, username, password = variablepasser() # type: 0 for signup, 1 for login
 
 lambda_client = boto3.client('lambda')
 test_event = {
+    "type": type,
     "username": username,
     "password": password
 }
