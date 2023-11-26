@@ -39,6 +39,13 @@ public class MainMenu {
         JMenuItem menuItemExit = new JMenuItem("Exit");
 
         JMenuItem menuItemCreateRocket = new JMenuItem("Create Rocket");
+        menuItemCreateRocket.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call the FrameConstructor main method
+                FrameConstructor.main(new String[0]);
+            }
+        });
         JMenuItem menuItemEditRocket = new JMenuItem("Edit Rocket");
         //JMenuItem menuItem 
         JMenuItem menuItemCompareRocket = new JMenuItem("Compare Rocket");

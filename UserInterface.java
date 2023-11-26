@@ -46,7 +46,7 @@ public class UserInterface {
         JFrame rocketframe = new JFrame("rocket");
         rocketframe.setLayout(new FlowLayout());
         rocketframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        rocketframe.setSize(1280, 720);
+        rocketframe.setSize(800, 800);
         return rocketframe;
     }
 
