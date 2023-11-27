@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 
 public class MainMenu {
     //public 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // Create and set up the window
         JFrame frame = new JFrame("MyRocket");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,9 +35,11 @@ public class MainMenu {
 
         // Add menu items
         JMenuItem menuItemLogin = new JMenuItem("Login");
-               menuItemLogin.addActionListener(new ActionListener() {
+        menuItemLogin.addActionListener(new ActionListener() 
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) 
+            {
                 // Call the FrameConstructor main method
                 LoginFrameConstructor.main(new String[0]);
             }
@@ -47,10 +50,13 @@ public class MainMenu {
         JMenuItem menuItemExit = new JMenuItem("Exit");
 
         JMenuItem menuItemCreateRocket = new JMenuItem("Create Rocket");
-        menuItemCreateRocket.addActionListener(new ActionListener() {
+        menuItemCreateRocket.addActionListener(new ActionListener() 
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) 
+            {
                 // Call the FrameConstructor main method
+                
                 FrameConstructor.main(new String[0]);
             }
         });
@@ -73,9 +79,13 @@ public class MainMenu {
 
         // Adding action listeners to the menu items
         menuItemExit.addActionListener(e -> System.exit(0));
-        menuItemLogin.addActionListener(new ActionListener() {
+        
+        menuItemLogin.addActionListener(new ActionListener() 
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) 
+            {
+                /* 
                 JFrame loginFrame = new JFrame("Login");
                 loginFrame.setSize(300, 150); // Adjust size as needed
                 loginFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -90,24 +100,37 @@ public class MainMenu {
                 JLabel passLabel = new JLabel("Password:");
                 JPasswordField passField = new JPasswordField(15);
                 passField.setPreferredSize(new Dimension(150, 20));
+                */
 
                 // Login button
                 JButton loginButton = new JButton("Login");
-                loginButton.addActionListener(new ActionListener() {
+                loginButton.addActionListener(new ActionListener() 
+                {
                     @Override
-                    public void actionPerformed(ActionEvent e) {
+                    public void actionPerformed(ActionEvent e) 
+                    {
                         // Handle login logic here
+                        /* 
                         String username = userField.getText();
                         char[] passwordArray = passField.getPassword();
                         String password = new String(passwordArray);
-
+                        */
+                        menuItemLogin.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                            // Call the FrameConstructor main method
+                                LoginFrameConstructor.main(new String[0]);
+                            }
+                        });
                         // You can add your authentication logic here
                         
 
                     }
                 });
+                
 
                 // Add components to the login frame
+                /* 
                 loginFrame.add(userLabel);
                 loginFrame.add(userField);
                 loginFrame.add(passLabel);
@@ -115,7 +138,8 @@ public class MainMenu {
                 loginFrame.add(new JLabel("")); // Placeholder for grid alignment
                 loginFrame.add(loginButton);
 
-                loginFrame.setVisible(true);
+                loginFrame.setVisible(false);
+                */
             }
         });
 
