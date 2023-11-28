@@ -4,149 +4,80 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenu {
-    //public 
-    public static void main(String[] args) 
-    {
-        // Create and set up the window
+
+    public static void main(String[] args) {
+        JFrame frame = initializeFrame();
+        addCenterText(frame);
+        addImage(frame);
+        JMenuBar menuBar = createMenuBar();
+        addAccountMenu(menuBar, frame);
+        addRocketMenu(menuBar, frame);
+        frame.setJMenuBar(menuBar);
+        frame.setVisible(true);
+    }
+
+    private static JFrame initializeFrame() {
         JFrame frame = new JFrame("MyRocket");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 800);
-        frame.setLayout(new BorderLayout()); // Set layout
+        frame.setLayout(new BorderLayout());
+        return frame;
+    }
 
-        // Screen text
+    private static void addCenterText(JFrame frame) {
         JLabel centerText = new JLabel("Welcome to MyRocket!", SwingConstants.CENTER);
         centerText.setFont(new Font("Serif", Font.BOLD, 24));
-        frame.add(centerText, BorderLayout.NORTH); // Add to the top
+        frame.add(centerText, BorderLayout.NORTH);
+    }
 
-        // Load and display image
+    private static void addImage(JFrame frame) {
         ImageIcon imageIcon = new ImageIcon(MainMenu.class.getResource("/resources/space.png"));
         JLabel imageLabel = new JLabel(imageIcon);
-        frame.add(imageLabel, BorderLayout.CENTER); // Add image to the center
-        
-        // Create the menu bar
-        JMenuBar menuBar = new JMenuBar();
+        frame.add(imageLabel, BorderLayout.CENTER);
+    }
 
-        // Create the "Account" menu
+    private static JMenuBar createMenuBar() {
+        return new JMenuBar();
+    }
+
+    private static void addAccountMenu(JMenuBar menuBar, JFrame frame) {
         JMenu accountMenu = new JMenu("Account");
         menuBar.add(accountMenu);
-        
+
+        JMenuItem menuItemLogin = new JMenuItem("Login");
+        menuItemLogin.addActionListener(e -> showLoginFrame());
+        accountMenu.add(menuItemLogin);
+
+        JMenuItem menuItemLogout = new JMenuItem("Logout");
+        accountMenu.add(menuItemLogout);
+
+        JMenuItem menuItemRegister = new JMenuItem("Register");
+        accountMenu.add(menuItemRegister);
+
+        JMenuItem menuItemExit = new JMenuItem("Exit");
+        menuItemExit.addActionListener(e -> System.exit(0));
+        accountMenu.add(menuItemExit);
+    }
+
+    private static void addRocketMenu(JMenuBar menuBar, JFrame frame) {
         JMenu rocketMenu = new JMenu("Rocket");
         menuBar.add(rocketMenu);
 
-        // Add menu items
-        JMenuItem menuItemLogin = new JMenuItem("Login");
-        menuItemLogin.addActionListener(new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                // Call the FrameConstructor main method
-                LoginFrameConstructor.main(new String[0]);
-            }
-        });
-        JMenuItem menuItemLogout = new JMenuItem("Logout");
-        JMenuItem menuItemRegister = new JMenuItem("Register");
-
-        JMenuItem menuItemExit = new JMenuItem("Exit");
-
         JMenuItem menuItemCreateRocket = new JMenuItem("Create Rocket");
-        menuItemCreateRocket.addActionListener(new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                // Call the FrameConstructor main method
-                
-                FrameConstructor.main(new String[0]);
-            }
-        });
-        JMenuItem menuItemEditRocket = new JMenuItem("Edit Rocket");
-        //JMenuItem menuItem 
-        JMenuItem menuItemCompareRocket = new JMenuItem("Compare Rocket");
-        JMenuItem menuItemGraphRocket = new JMenuItem("Graph Rocket");
-
-
-        // Adding menu items to the account menu
-        accountMenu.add(menuItemLogin);
-        accountMenu.add(menuItemLogout);
-        accountMenu.add(menuItemRegister);
-        accountMenu.addSeparator(); // Adds a separator line
-        accountMenu.add(menuItemExit);
-
+        menuItemCreateRocket.addActionListener(e -> FrameConstructor.main(new String[0]));
         rocketMenu.add(menuItemCreateRocket);
+
+        JMenuItem menuItemEditRocket = new JMenuItem("Edit Rocket");
         rocketMenu.add(menuItemEditRocket);
+
+        JMenuItem menuItemCompareRocket = new JMenuItem("Compare Rocket");
         rocketMenu.add(menuItemCompareRocket);
 
-        // Adding action listeners to the menu items
-        menuItemExit.addActionListener(e -> System.exit(0));
-        
-        menuItemLogin.addActionListener(new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                /* 
-                JFrame loginFrame = new JFrame("Login");
-                loginFrame.setSize(300, 150); // Adjust size as needed
-                loginFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                loginFrame.setLayout(new GridLayout(3, 2, 5, 5)); // Rows, Cols, Hgap, Vgap
+        JMenuItem menuItemGraphRocket = new JMenuItem("Graph Rocket");
+        rocketMenu.add(menuItemGraphRocket);
+    }
 
-                // Username field
-                JLabel userLabel = new JLabel("Username:");
-                JTextField userField = new JTextField(15);
-                userField.setPreferredSize(new Dimension(150, 20));
-
-                // Password field
-                JLabel passLabel = new JLabel("Password:");
-                JPasswordField passField = new JPasswordField(15);
-                passField.setPreferredSize(new Dimension(150, 20));
-                */
-
-                // Login button
-                JButton loginButton = new JButton("Login");
-                loginButton.addActionListener(new ActionListener() 
-                {
-                    @Override
-                    public void actionPerformed(ActionEvent e) 
-                    {
-                        // Handle login logic here
-                        /* 
-                        String username = userField.getText();
-                        char[] passwordArray = passField.getPassword();
-                        String password = new String(passwordArray);
-                        */
-                        menuItemLogin.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                            // Call the FrameConstructor main method
-                                LoginFrameConstructor.main(new String[0]);
-                            }
-                        });
-                        // You can add your authentication logic here
-                        
-
-                    }
-                });
-                
-
-                // Add components to the login frame
-                /* 
-                loginFrame.add(userLabel);
-                loginFrame.add(userField);
-                loginFrame.add(passLabel);
-                loginFrame.add(passField);
-                loginFrame.add(new JLabel("")); // Placeholder for grid alignment
-                loginFrame.add(loginButton);
-
-                loginFrame.setVisible(false);
-                */
-            }
-        });
-
-        // Set the menu bar on the frame
-        frame.setJMenuBar(menuBar);
-
-        // Display the window
-        frame.setVisible(true);
+    private static void showLoginFrame() {
+        LoginFrameConstructor.main(new String[0]);
     }
 }
