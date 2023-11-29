@@ -2,21 +2,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-// import javax.swing.filechooser.FileNameExtensionFilter;
-// import java.io.File;
-// import java.io.IOException;
-
 
 public class UserInterface {
     static double[] dataValues = new double[3];
+    static String rocketName;
     static boolean isSubmitted = false;
     
     public static void RocketGui(Runnable callback) {
-        JFrame rocketframe = initializeFrame();
+        JFrame rocketFrame = initializeFrame();
 
-        JTextField massInput = addMassInput(rocketframe);
-        JTextField dragInput = addDragInput(rocketframe);
-        JTextField diameterInput = addDiameterInput(rocketframe);
+        JTextField nameInput = addNameInput(rocketFrame);
+        JTextField massInput = addMassInput(rocketFrame);
+        JTextField thrustInput = addthrustInput(rocketFrame);
+        JTextField diameterInput = addDiameterInput(rocketFrame);
 
         // Submit Button
         JButton submit = new JButton("Submit");
@@ -24,54 +22,61 @@ public class UserInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    rocketName = nameInput.getText();
                     dataValues[0] = Double.parseDouble(massInput.getText());
-                    dataValues[1] = Double.parseDouble(dragInput.getText());
+                    dataValues[1] = Double.parseDouble(thrustInput.getText());
                     dataValues[2] = Double.parseDouble(diameterInput.getText());
                     
                     isSubmitted = true;
-                    callback.run();         // Run the callback
+                    callback.run(); // Run the callback
 
-                } 
-                catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(rocketframe, "Please enter valid numbers in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(rocketFrame, "Please enter valid numbers in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-        rocketframe.add(submit);
-        rocketframe.setVisible(true);
+        rocketFrame.add(submit);
+        rocketFrame.setVisible(true);
         
     }
     
     private static JFrame initializeFrame() {
-        JFrame rocketframe = new JFrame("rocket");
-        rocketframe.setLayout(new FlowLayout());
-        rocketframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        rocketframe.setSize(800, 800);
-        return rocketframe;
+        JFrame rocketFrame = new JFrame("Rocket Interface");
+        rocketFrame.setLayout(new FlowLayout());
+        rocketFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        rocketFrame.setSize(800, 800);
+        return rocketFrame;
     }
 
+    private static JTextField addNameInput(JFrame rocketFrame) {
+        JTextField name = new JTextField(20);
+        JLabel nameLabel = new JLabel("Input rocket name here:");
+        rocketFrame.add(nameLabel);
+        rocketFrame.add(name);
+        return name;
+    }
 
-    private static JTextField addMassInput(JFrame rocketframe) {
+    private static JTextField addMassInput(JFrame rocketFrame) {
         JTextField mass = new JTextField(20);
-        JLabel masslabel = new JLabel("Input mass here:");
-        rocketframe.add(masslabel);
-        rocketframe.add(mass);
+        JLabel massLabel = new JLabel("Input mass here:");
+        rocketFrame.add(massLabel);
+        rocketFrame.add(mass);
         return mass;
     }
 
-    private static JTextField addDragInput(JFrame rocketframe) {
-        JTextField dragCoefficient = new JTextField(20);
-        JLabel dragLabel = new JLabel("Input coefficient of drag here:");
-        rocketframe.add(dragLabel);
-        rocketframe.add(dragCoefficient);
-        return dragCoefficient;
+    private static JTextField addthrustInput(JFrame rocketFrame) {
+        JTextField thrustCoefficient = new JTextField(20);
+        JLabel thrustLabel = new JLabel("Input thrust coefficient here:"); // Updated the label
+        rocketFrame.add(thrustLabel);
+        rocketFrame.add(thrustCoefficient);
+        return thrustCoefficient;
     }
 
-    private static JTextField addDiameterInput(JFrame rocketframe) {
+    private static JTextField addDiameterInput(JFrame rocketFrame) {
         JTextField diameter = new JTextField(20);
         JLabel diameterLabel = new JLabel("Input diameter here:");
-        rocketframe.add(diameterLabel);
-        rocketframe.add(diameter);
+        rocketFrame.add(diameterLabel);
+        rocketFrame.add(diameter);
         return diameter;
     }
 }
